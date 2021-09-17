@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Article_m;
+use App\Http\Controllers\Article_c;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,16 +29,6 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', function () {    
-    return view('content.blog', [
-        'title'     => 'Blog',
-        'blogPost'  => Article_m::allArticle()
-    ]);
-});
+Route::get('/blog', [Article_c::class, 'index']);
 
-Route::get('/posts/{slug}', function($slug) {
-    return view('content.post', [
-        'title'         => 'Post',
-        'selectedPost'  => Article_m::getArticle($slug)
-    ]);
-});
+Route::get('/posts/{slug}', [Article_c::class, 'detailArticle']);
