@@ -9,14 +9,14 @@ class Article_c extends Controller{
     public function index(){
         return view('content.blog', [
             'title'     => 'Blog',
-            'blogPost'  => Article_m::allArticle()
+            'blogPost'  => Article_m::all()
         ]);
     }
 
-    public function detailArticle($slug){
+    public function detailArticle(Article_m $selected_post){
         return view('content.post', [
             'title'         => 'Post',
-            'selectedPost'  => Article_m::getArticle($slug)
+            'selectedPost'  => $selected_post
         ]);
     }
 }

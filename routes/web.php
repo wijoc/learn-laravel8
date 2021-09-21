@@ -31,4 +31,4 @@ Route::get('/about', function () {
 
 Route::get('/blog', [Article_c::class, 'index']);
 
-Route::get('/posts/{slug}', [Article_c::class, 'detailArticle']);
+Route::get('/posts/{selected_post:a_slug}', [Article_c::class, 'detailArticle']);
