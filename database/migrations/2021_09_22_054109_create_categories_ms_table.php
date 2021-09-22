@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArticleMsTable extends Migration
+class CreateCategoriesMsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateArticleMsTable extends Migration
      */
     public function up()
     {
-        Schema::create('article_ms', function (Blueprint $table) {
+        Schema::create('categories_ms', function (Blueprint $table) {
             $table->id();
-            $table->string('a_title');
-            $table->string('a_slug')->unique();
-            $table->text('a_excerpt');
-            $table->text('a_body');
-            $table->string('a_author');
-            $table->timestamp('a_published_at')->nullable();
+            $table->string('c_name')->unique();
+            $table->string('c_slug')->unique();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateArticleMsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article_ms');
+        Schema::dropIfExists('categories_ms');
     }
 }
