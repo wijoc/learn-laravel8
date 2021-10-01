@@ -17,11 +17,11 @@ class Category_m extends Model
         'c_slug',
     ];
 
-    /** E-Function : create relation to model : Article_m 
+    /** E-Function : Create relation to model : Article_m 
      * syntax : $this->[relationship type]([model]::class, [foreign_key])
      * foreign_key is optional
     */
-    public function article_m(){
+    public function articles(){
         return $this->hasMany(Article_m::class, 'category_id');
     }
 }

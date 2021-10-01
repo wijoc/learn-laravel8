@@ -27,7 +27,7 @@ class Article_m extends Model
     protected $guarded = ['id'];
 
     /** E-Function : create relation to model : Category_m */
-    public function category_m(){
+    public function categories(){
         return $this->belongsTo(Category_m::class, 'category_id');
     }
 }
