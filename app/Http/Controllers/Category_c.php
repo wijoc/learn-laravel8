@@ -16,7 +16,7 @@ class Category_c extends Controller{
     public function categoryArticles(Category_m $selected_ctgr){
         return view('content.categoris_articles', [
             'title'         => $selected_ctgr->c_name,
-            'articlesData'  => $selected_ctgr->article_m,
+            'articlesData'  => $selected_ctgr->articles,
             'selectedCtgr'  => $selected_ctgr->c_name
         ]);
     }

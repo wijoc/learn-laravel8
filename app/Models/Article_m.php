@@ -26,8 +26,13 @@ class Article_m extends Model
     //];
     protected $guarded = ['id'];
 
-    /** E-Function : create relation to model : Category_m */
+    /** Relation : create relation to model : Category_m */
     public function categories(){
         return $this->belongsTo(Category_m::class, 'category_id');
+    }
+
+    /** Relation : to model : Users */
+    public function users(){
+        return $this->belongsTo(User::class, 'author_id');
     }
 }
