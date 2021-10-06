@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Article_m extends Model
+class ArticleModel extends Model
 {
     use HasFactory;
 
@@ -26,13 +26,13 @@ class Article_m extends Model
     //];
     protected $guarded = ['id'];
 
-    /** Relation : create relation to model : Category_m */
+    /** Relation : create relation to model : CategoryModel */
     public function categories(){
-        return $this->belongsTo(Category_m::class, 'category_id');
+        return $this->belongsTo(CategoryModel::class, 'category_id');
     }
 
     /** Relation : to model : Users */
-    public function users(){
+    public function author(){
         return $this->belongsTo(User::class, 'author_id');
     }
 }

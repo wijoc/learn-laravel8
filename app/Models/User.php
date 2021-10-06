@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /** Relation : to model Article_m */
+    /** Relation : to model ArticleModel */
     public function articles(){
-        return $this->hasMany(Article_m::class, 'author_id');
+        return $this->hasMany(ArticleModel::class, 'author_id');
     }
 }

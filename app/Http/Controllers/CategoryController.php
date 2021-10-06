@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Category_m;
+use App\Models\CategoryModel;
 
 use Illuminate\Http\Request;
 
-class Category_c extends Controller{
+class CategoryController extends Controller{
     public function index(){
         return view('content.categories', [
             'title'     => 'Category',
-            'ctgrData'  => Category_m::all()
+            'ctgrData'  => CategoryModel::all()
         ]);
     }
 
-    public function categoryArticles(Category_m $selected_ctgr){
+    public function categoryArticles(CategoryModel $selected_ctgr){
         return view('content.categoris_articles', [
             'title'         => $selected_ctgr->c_name,
             'articlesData'  => $selected_ctgr->articles,

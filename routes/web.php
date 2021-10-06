@@ -1,9 +1,10 @@
 <?php
 
-use App\Models\Article_m;
-use App\Models\Category_m;
-use App\Http\Controllers\Article_c;
-use App\Http\Controllers\Category_c;
+use App\Models\ArticleModel;
+use App\Models\CategoryModel;
+use App\Models\User;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,13 +32,21 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', [Article_c::class, 'index']);
+Route::get('/blog', [ArticleController::class, 'index']);
 
-Route::get('/posts/{selected_post:a_slug}', [Article_c::class, 'detailArticle']);
+Route::get('/posts/{selected_post:a_slug}', [ArticleController::class, 'detailArticle']);
 
-Route::get('/categories', [Category_c::class, 'index']);
+Route::get('/categories', [CategoryController::class, 'index']);
 
-Route::get('/category/{selected_ctgr:c_slug}', [Category_c::class, 'categoryArticles']);
+Route::get('/category/{selected_ctgr:c_slug}', [CategoryController::class, 'categoryArticles']);
+
+Route::get('/author/{selected_author:username}', function(User $selected_author){
+    return view('content.author_articles', [
+        'title' => 'Author Post',
+        'articlesData' => $selected_author->articles,
+        'selectedAuthor' => $selected_author->name
+    ]);
+});
 
 /** How to call controller */
     /** Laravel 8 */

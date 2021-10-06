@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Article_m;
+use App\Models\ArticleModel;
 
 use Illuminate\Http\Request;
 
-class Article_c extends Controller{
+class ArticleController extends Controller{
     public function index(){
         /** Pass data to view */
 
         /** 1. Array */
         return view('content.blog', [
             'title'     => 'Blog',
-            'blogPost'  => Article_m::all()
+            // 'blogPost'  => ArticleModel::all() // All row-data sort by id ASC
+            'blogPost'  => ArticleModel::latest()->get() // All row-data sort by created_at DESC
         ]);
 
         /** 2. using compact */
@@ -27,7 +28,7 @@ class Article_c extends Controller{
 
     }
 
-    public function detailArticle(Article_m $selected_post){
+    public function detailArticle(ArticleModel $selected_post){
         return view('content.post', [
             'title'         => 'Post',
             'selectedPost'  => $selected_post
