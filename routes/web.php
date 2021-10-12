@@ -5,6 +5,7 @@ use App\Models\CategoryModel;
 use App\Models\User;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +21,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('content.home', [
-        'title' => 'Home',
+        'nav'   => 'HP',
+        'tab_title'     => 'XA | Home',
     ]);
 });
 
 Route::get('/about', function () {
     return view('content.about', [
-        'title' => 'About',
+        'nav'   => 'AP',
+        'tab_title'     => 'XA | About',
         'name'  => 'Point Brake',
         'mail'  => 'point@break.id',
     ]);
@@ -34,19 +37,27 @@ Route::get('/about', function () {
 
 Route::get('/blog', [ArticleController::class, 'index']);
 
-Route::get('/posts/{selected_post:a_slug}', [ArticleController::class, 'detailArticle']);
+Route::get('/article/{selected_post:a_slug}', [ArticleController::class, 'detailArticle']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
 Route::get('/category/{selected_ctgr:c_slug}', [CategoryController::class, 'categoryArticles']);
 
-Route::get('/author/{selected_author:username}', function(User $selected_author){
-    return view('content.author_articles', [
-        'title' => 'Author Post',
-        'articlesData' => $selected_author->articles,
-        'selectedAuthor' => $selected_author->name
-    ]);
-});
+Route::get('/author/{selected_author:username}', [UserController::class, 'userArticles']);
+
+/** Lazy eager loading in routes model binding */
+// Route::get('/author/{selected_author:username}', function(User $selected_author) {
+//     return view('content.articles', [
+//         'tab_title'     => 'XA | Articles by Author',
+//         'page_title'    => 'Article by Author : '.$selected_author->name,
+//         'articlesData'  => $selected_author->articles->load('category', 'author'),
+//     ]);
+// });
+// return view('content.articles', [
+//     'tab_title'     => 'XA | Articles by Author',
+//     'page_title'    => 'Article by Author : '.$selected_author->name,
+//     'articlesData'  => $selected_author->articles,
+// ]);
 
 /** How to call controller */
     /** Laravel 8 */

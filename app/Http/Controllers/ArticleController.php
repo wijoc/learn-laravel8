@@ -10,10 +10,14 @@ class ArticleController extends Controller{
         /** Pass data to view */
 
         /** 1. Array */
-        return view('content.blog', [
-            'title'     => 'Blog',
+        return view('content.articles', [
+            'nav'   => 'BP',
+            'tab_title'    => 'XA | Blog',
+            'page_title'   => 'Articles',
             // 'blogPost'  => ArticleModel::all() // All row-data sort by id ASC
-            'blogPost'  => ArticleModel::latest()->get() // All row-data sort by created_at DESC
+            // 'articlesData' => ArticleModel::latest()->get() // All row-data sort by created_at DESC
+            // 'articlesData' => ArticleModel::with(['author', 'category'])->latest()->get() // Using Eager loading
+            'articlesData' => ArticleModel::latest()->get() // Using Eager loading, but with() is on the model
         ]);
 
         /** 2. using compact */
@@ -29,9 +33,10 @@ class ArticleController extends Controller{
     }
 
     public function detailArticle(ArticleModel $selected_post){
-        return view('content.post', [
-            'title'         => 'Post',
-            'selectedPost'  => $selected_post
+        return view('content.article', [
+            'nav'   => 'DAP',
+            'tab_title'    => 'XA | '.$selected_post->a_title,
+            'selectedArticle'  => $selected_post
         ]);
     }
 }

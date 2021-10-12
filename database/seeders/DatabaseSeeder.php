@@ -21,13 +21,18 @@ class DatabaseSeeder extends Seeder
         User::factory(3)->create();
 
         CategoryModel::create([
-            'c_name' => 'Category 1',
-            'c_slug' => 'category-1'
+            'c_name' => 'Programming',
+            'c_slug' => 'programming'
         ]);
 
         CategoryModel::create([
-            'c_name' => 'Category 2',
-            'c_slug' => 'category-2'
+            'c_name' => 'Web Design',
+            'c_slug' => 'web-design'
+        ]);
+
+        CategoryModel::create([
+            'c_name' => 'Personal',
+            'c_slug' => 'personal'
         ]);
 
         ArticleModel::factory(10)->create();

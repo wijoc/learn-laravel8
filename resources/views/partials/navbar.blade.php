@@ -7,16 +7,16 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
+                        <a class="nav-link {{ ($nav == 'HP')? 'active' : '' }}" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link {{ ($nav == 'AP')? 'active' : '' }}" href="/about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
+                        <a class="nav-link {{ ($nav == 'BP' || $nav == 'DAP')? 'active' : '' }}" href="/blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
+                        <a class="nav-link {{ ($nav == 'CP')? 'active' : '' }}" href="/categories">Category</a>
                     </li>
                 </ul>
               </div>

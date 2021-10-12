@@ -3,16 +3,24 @@
 @section('content')
 
     <h2>Categories</h2>
-    <ul>
-        @if(count($ctgrData) > 0)
+
+    <div class="containter">
+        <div class="row justify-content-center">
             @foreach($ctgrData as $row)
-                <li>
-                    <a href="/category/{{ $row->c_slug }}">{{ $row->c_name }}</a>
-                </li>
+            <div class="col-md-4">
+                <a href="/category/{{ $row->c_slug }}">
+                    <div class="card bg-dark text-white">
+                        <img src="https://source.unsplash.com/500x500?{{ $row->c_name }}" class="card-img" alt="{{ $row->c_name }}">
+                        <div class="card-img-overlay d-flex align-items-center p-0">
+                            <h2 class="card-title flex-fill text-center" style="background-color: rgba(0, 0, 0, 0.5)">
+                                {{ $row->c_name }}
+                            </h2>
+                        </div>
+                    </div>
+                </a>
+            </div>
             @endforeach
-        @else
-                <h4 class="alert alert-warning"> Data tidak tersedia</h4>
-        @endif
-    </ul>
+        </div>
+    </div>
 
 @endsection()

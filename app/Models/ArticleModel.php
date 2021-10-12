@@ -17,17 +17,18 @@ class ArticleModel extends Model
      * or use guarded using un-fillable field as value
      * @var string[]
      */
-    //protected $fillable = [
+    //protected $fillable = [ // list of field that allowed to mass assignable
     //    'a_title',
     //    'a_slug',
     //    'a_author',
     //    'a_excerpt',
     //    'a_body',
     //];
-    protected $guarded = ['id'];
+    protected $guarded = ['id']; // all field except id, are writable using mass assigment
+    protected $with = ['category', 'author']; // list of relation for with() in eager loading
 
     /** Relation : create relation to model : CategoryModel */
-    public function categories(){
+    public function category(){
         return $this->belongsTo(CategoryModel::class, 'category_id');
     }
 
