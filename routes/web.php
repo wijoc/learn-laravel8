@@ -41,10 +41,6 @@ Route::get('/article/{selected_post:a_slug}', [ArticleController::class, 'detail
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
-Route::get('/category/{selected_ctgr:c_slug}', [CategoryController::class, 'categoryArticles']);
-
-Route::get('/author/{selected_author:username}', [UserController::class, 'userArticles']);
-
 /** Lazy eager loading in routes model binding */
 // Route::get('/author/{selected_author:username}', function(User $selected_author) {
 //     return view('content.articles', [

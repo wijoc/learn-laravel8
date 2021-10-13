@@ -7,8 +7,8 @@
             <div class="col-md-8">
                 <h1 class="mb-3">{{ $selectedArticle->a_title }}</h1>
                 <p>
-                    By : <a href="/author/{{ $selectedArticle->author->username }}" class="text-decoration-none">{{ $selectedArticle->author->name }}</a>
-                    , in <a href="/category/{{ $selectedArticle->category->c_slug }}" class="text-decoration-none">{{ $selectedArticle->category->c_name }}</a>
+                    By : <a href="/blog?getAuthor={{ $selectedArticle->author->username }}" class="text-decoration-none">{{ $selectedArticle->author->name }}</a>
+                    , in <a href="/blog?getCategory={{ $selectedArticle->category->c_slug }}" class="text-decoration-none">{{ $selectedArticle->category->c_name }}</a>
                 </p>
 
                 <img src="https://source.unsplash.com/1200x400?{{ $selectedArticle->category->c_name }}" class="img-fluid" alt="https://source.unsplash.com/500x400?{{ $selectedArticle->category->c_name }}">

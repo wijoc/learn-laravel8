@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             @foreach($ctgrData as $row)
             <div class="col-md-4">
-                <a href="/category/{{ $row->c_slug }}">
+                <a href="/blog?getcategory={{ $row->c_slug }}">
                     <div class="card bg-dark text-white">
                         <img src="https://source.unsplash.com/500x500?{{ $row->c_name }}" class="card-img" alt="{{ $row->c_name }}">
                         <div class="card-img-overlay d-flex align-items-center p-0">
