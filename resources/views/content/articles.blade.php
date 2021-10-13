@@ -72,6 +72,10 @@
     
             </div>
         </div>
+
+        <div class="d-flex justify-content-end">
+            {{ $articlesData->links() }}
+        </div>
     @else
         <p class="text-center fs-3">No post found</p>
     @endif

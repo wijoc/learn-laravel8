@@ -31,7 +31,15 @@ class ArticleController extends Controller{
                 // 'articlesData' => ArticleModel::latest()->get() // All row-data sort by created_at DESC
                 // 'articlesData' => ArticleModel::with(['author', 'category'])->latest()->get() // Using Eager loading
                 // 'articlesData' => ArticleModel::latest()->get() // Using Eager loading, but with() is on the model
-                'articlesData' => ArticleModel::latest()->filter(request(['getSearch', 'getCategory', 'getAuthor']))->get() // Search, category and author, filter() is our localscope
+
+                /** Search, category and author, filter() is our localscope */
+                // 'articlesData' => ArticleModel::latest()->filter(request(['getSearch', 'getCategory', 'getAuthor']))->get()
+
+                /** Using pagination default is tailwind, and load paginator lib, 
+                 * change provider to bootstrap theme with Paginator::useBootstrap() in App\Providers\AppServiceProvider -> function boot 
+                 * withQueryString() to bring every query that already exist, in this case getSearch / getCategory / getAuthor
+                 * */
+                'articlesData' => ArticleModel::latest()->filter(request(['getSearch', 'getCategory', 'getAuthor']))->paginate(7)->withQueryString()
             ]);
 
             /** 2. using compact */
